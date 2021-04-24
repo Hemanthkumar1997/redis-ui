@@ -8,7 +8,7 @@ Simple Redis Key-value viewer application.
 * clicking on any key listed, it will show the pretty-printed json value in new tab.
 
 #### Links
-* `/getAllKeys`&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-> Lists all keys</pre>
+* `/`&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-> Lists all keys</pre>
 * `/getAllKeys`&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-> Lists all keys</pre>
 * `/getVal/<key>`&nbsp; &nbsp; &nbsp;-> Fetches value of supplied key
 * `/purgeAll/`&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-> Flushes everything in cache
