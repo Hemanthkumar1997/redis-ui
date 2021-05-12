@@ -4,8 +4,11 @@ import flask
 import waitress
 import logging
 from flask import render_template
+from flask_cors import CORS, cross_origin
 
 app = flask.Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 try:
     r = redis.Redis(host="localhost", port="6379", db=0)
@@ -15,7 +18,14 @@ except Exception as e:
 
 @app.route("/getAllKeys", methods=['post'])
 def get_keys_from():
-    return json.dumps(r.keys("*"))
+    keys = []
+    for each_key in r.keys("*"):
+        keys.append(str(each_key).replace('\'', "").replace("b", ""))
+    return app.response_class(
+            response=json.dumps({"keys": keys}),
+            status=200,
+            mimetype='application/json'
+        )
 
 
 @app.route("/getVal/<key>")
@@ -84,6 +94,7 @@ def delete():
 
 
 @app.route("/")
+@cross_origin()
 def home():
     global r
     if r is None:
